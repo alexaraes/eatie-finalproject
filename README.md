@@ -55,5 +55,5 @@ Validation will be needed for login and sign-up
 ```
 ```
 ###Contact Me
-<strong>Twitter:</strong> [@Awrecksa](http://www.twitter.com/awrecksa)
+<strong>Twitter:</strong> [@Awrecksa](http://www.twitter.com/awrecksa)<br />
 [LinkedIn](https://www.linkedin.com/pub/alexa-schreffler/bb/526/544)
