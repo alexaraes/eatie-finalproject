@@ -4,7 +4,7 @@
 This app was inspired by the belief that people want to experience the city they are visiting from a local's point of view while still enjoying the best food the city has to offer. The app will suggest the best restaurants in the city along with exactly what to order. The idea is meant to be a replacement for asking for suggestions on social media from friends living in Austin and other destination cities. It will have a sharing option so you can share your experiences at the restaurants and see others' posts too!
 
 ##Wireframes
-View my wireframes here: <br/>
+[Wireframes](https://alexaraes.mybalsamiq.com/projects/eatieaustin/grid)
 
 ##User Stories
 [My Trello board](https://trello.com/b/P7rAF2BL/eatie-austin)
