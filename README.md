@@ -30,6 +30,7 @@ id: string, null, required
 createdAt: number, Date.Now(), required
 product: string, null, required
 address: string, null, required
+category: string, null, required
 latitude: number, null, required
 longitude: number, null, required
 ```
