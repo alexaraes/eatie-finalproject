@@ -51,7 +51,8 @@ Validation will be needed for login and sign-up
 ##APIs, Plugins, Libraries and Frameworks
 <strong>Frameworks:</strong> React.js, Backbone.js<br/>
 <strong>Libraries</strong>: jQuery, Validator.js <br/>
-<strong>APIs:</strong> Google Maps, Parse
+<strong>APIs:</strong> Google Maps, Parse <br/>
+[Google Maps API Hello World](https://github.com/alexaraes/maps-helloworld)
 ```
 ```
 ###Contact Me
