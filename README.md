@@ -53,7 +53,7 @@ Validation will be needed for login and sign-up
 <strong>Libraries</strong>: jQuery, Validator.js <br/>
 <strong>APIs:</strong> Google Maps, Parse
 ```
-
+```
 ###Contact Me
 <strong>Twitter:</strong> [@Awrecksa](http://www.twitter.com/awrecksa)
 [LinkedIn](https://www.linkedin.com/pub/alexa-schreffler/bb/526/544)
