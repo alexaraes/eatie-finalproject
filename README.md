@@ -7,7 +7,8 @@ This app was inspired by the belief that people want to experience the city they
 View my wireframes here: <br/>
 
 ##User Stories
-My Trello board: <br/>
+[My Trello board](https://trello.com/b/P7rAF2BL/eatie-austin)
+
 
 ##Models
 ####User Model
