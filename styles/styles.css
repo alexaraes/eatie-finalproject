@@ -1,0 +1,30 @@
+a {
+  text-decoration: none;
+  color: white; }
+
+.navbar {
+  height: 65px;
+  width: 100%;
+  background-color: black;
+  position: fixed; }
+  .navbar ul {
+    font-family: "Open Sans", sans-serif;
+    text-align: right;
+    margin-top: 25px; }
+  .navbar .navlinks {
+    display: inline-block;
+    color: white;
+    margin-right: 6%; }
+
+.bg-img {
+  padding-top: 30px; }
+  .bg-img img {
+    max-height: 100%;
+    max-width: 100%; }
+
+.sugg-pic {
+  background-color: black;
+  height: 400px;
+  border: 2px solid white; }
+
+/*# sourceMappingURL=styles.css.map */
