@@ -70,6 +70,29 @@ module.exports = React.createClass({
 				  <div className="grid-item"></div>
 				  <div className="grid-item"></div>
 				  <div className="grid-item grid-item--height2"></div>
+				  <div className="grid-item"></div>
+				  <div className="grid-item grid-item--height2"></div>
+				  <div className="grid-item grid-item--height3"></div>
+				  <div className="grid-item grid-item--height2"></div>
+				  <div className="grid-item"></div>
+				  <div className="grid-item"></div>
+				  <div className="grid-item"></div>
+				  <div className="grid-item grid-item--height2"></div>
+				  <div className="grid-item grid-item--height3"></div>
+				  <div className="grid-item"></div>
+				  <div className="grid-item grid-item--height2"></div>
+				  <div className="grid-item"></div>
+				  <div className="grid-item grid-item--height2"></div>
+				  <div className="grid-item"></div>
+				  <div className="grid-item"></div>
+				  <div className="grid-item grid-item--height2"></div>
+				  <div className="grid-item"></div>
+				  <div className="grid-item"></div>
+				  <div className="grid-item grid-item--height3"></div>
+				  <div className="grid-item grid-item--height2"></div>
+				  <div className="grid-item"></div>
+				  <div className="grid-item"></div>
+				  <div className="grid-item grid-item--height2"></div>
 				</div>
 			</div>
 		)
