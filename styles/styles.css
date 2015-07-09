@@ -1,19 +1,65 @@
+body {
+  background-color: black;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+* {
+  font-family: "Open Sans", sans-serif; }
+
 a {
   text-decoration: none;
   color: white; }
 
+a:hover {
+  color: #f87272; }
+
+.grid {
+  /* center */
+  margin: 0 auto; }
+
+/* clearfix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both; }
+
+/* ---- grid-item ---- */
+.grid-item {
+  width: 180px;
+  height: 120px;
+  float: left;
+  background-image: url("http://www.localsugar.com/userfiles/images/launderette5.jpg");
+  background-position: 75% 25%;
+  border: 2px solid #333;
+  border-color: rgba(0, 0, 0, 0.5);
+  border-radius: 5px; }
+
+.grid-item:hover {
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("http://www.localsugar.com/userfiles/images/launderette5.jpg"); }
+
+.grid-item--height2 {
+  height: 200px; }
+
+.grid-item--height3 {
+  height: 260px; }
+
 .navbar {
-  height: 65px;
+  box-sizing: border-box;
+  height: 50px;
   width: 100%;
   background-color: black;
   position: fixed;
-  z-index: 3; }
-  .navbar ul {
-    font-family: "Open Sans", sans-serif;
-    text-align: right;
-    margin-top: 25px; }
+  z-index: 10;
+  font-family: "Open Sans", sans-serif;
+  text-align: right;
+  padding-top: 20px; }
   .navbar .linkDiv {
     display: inline-block;
+    color: white;
+    margin-right: 6%; }
+  .navbar .greet {
+    text-align: left;
+    display: none;
     color: white;
     margin-right: 6%; }
 
@@ -21,19 +67,55 @@ a {
   height: 500px;
   top: 65px;
   padding-top: 30px;
+  margin-bottom: 250px;
   position: relative;
   background-size: cover;
   background-image: url("../images/austin-skyline.jpg"); }
 
-.hello {
+.hello, .hello2 {
   text-align: center;
-  font-size: 80px;
+  font-size: 5.3vw;
   color: white;
   font-family: "Open Sans", sans-serif;
-  padding-top: 10%; }
+  padding-top: 17%; }
 
-.sugg-pic {
+.hello2 {
+  margin-top: 40px; }
+
+.sugg-pic, .sugg-pic2 {
+  text-align: center;
+  color: white;
+  background-image: url("http://www.localsugar.com/userfiles/images/launderette5.jpg");
+  background-position: fixed;
   background-color: black;
-  height: 400px; }
+  height: 500px; }
+
+.sugg-pic:hover {
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("http://www.localsugar.com/userfiles/images/launderette5.jpg"); }
+
+.loginForm, .regForm {
+  text-align: center;
+  padding-top: 100px; }
+
+@media (min-width: 760px) {
+  .greet {
+    display: inline-block; }
+
+  .hello {
+    padding-top: 8%; }
+
+  .hello2 {
+    display: none; }
+
+  .sugg-pic, .sugg-pic2 {
+    width: 50%;
+    float: left; } }
+@media (min-width: 1300px) {
+  .sugg-pic, .sugg-pic2 {
+    width: 33%;
+    float: left; }
+
+  .sugg-pic2 {
+    height: 350px; } }
 
 /*# sourceMappingURL=styles.css.map */

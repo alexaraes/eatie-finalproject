@@ -7,7 +7,7 @@ module.exports = Backbone.Model.extend({
         password: null,
         email: null,
         firstName: null,
-        createdAt: new Date(),
+        createdAt: null,
         loggedIn: false
     },
     parseClassName: '_User',

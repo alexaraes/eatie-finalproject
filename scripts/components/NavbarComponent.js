@@ -12,6 +12,9 @@ module.exports = React.createClass({
 	render: function() {
 		var loggedInNav = null;
 		var links = [];
+		var firstName = this.props.user.get('name');
+
+		console.log(firstName);
 		
 		if(!this.props.user.id) {
 			links.push(<li className="linkDiv"><a href="#home">HOME</a></li>);
@@ -21,17 +24,18 @@ module.exports = React.createClass({
 		if (this.props.user.id) {
 
 			loggedInNav = (
-				<div className="navbar">
+				<div>
 					<ul>
 						<li className="linkDiv"><a href="#home">HOME</a></li>
-						<li className="linkDiv"><a href="#login">PROFILE</a></li>
+						<li className="linkDiv"><a href="#profile">PROFILE</a></li>
 						<li className="linkDiv" onClick={this.onLogOut}><a href="#home">LOG OUT</a></li>
+						<li className="greet">Hey, <a href="#profile"> {firstName}!</a></li>
 					</ul>
 				</div>
 			);
 		}
 		return (
-			<nav className="nav">
+			<nav className="navbar">
 				<div>{links}</div>
 				<div>{loggedInNav}</div>
 			</nav>

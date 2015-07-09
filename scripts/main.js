@@ -1,15 +1,22 @@
 var React = require('react');
 var Backbone = require('backbone');
+var $ = require('jquery');
+
 var UserModel = require('./models/UserModel.js');
 var PostCollection = require('./collections/PostCollection.js');
 
 var HomePage = require('./components/HomeComponent.js');
 var NavBar = require('./components/NavbarComponent.js');
+var LoginPage = require('./components/LoginComponent.js');
+var SignUpPage = require('./components/SignupComponent.js');
+var ProfilePage = require('./components/ProfileComponent.js');
+
+var user = new UserModel();
 
 var containerEl = document.getElementById('container');
 
 React.render(
-	<NavBar myApp={myApp} />,
+	<NavBar user={user} myApp={myApp} />,
 	document.getElementById('nav')
 );
 
@@ -26,44 +33,44 @@ var App = Backbone.Router.extend({
 	},
 	home: function() {
 		React.render(
-			<HomePage />,
+			<HomePage user={user} myApp={myApp} />,
 			containerEl
 		);
 	},
 	signup: function() {
 		React.render(
-			<SignUpPage />,
+			<SignUpPage user={user} myApp={myApp} />,
 			containerEl
 		);
 	},
 	login: function() {
 		React.render(
-			<LoginPage />,
+			<LoginPage user={user} myApp={myApp} />,
 			containerEl
 		);
 	},
 	profile: function() {
 		React.render(
-			<ProfilePage />,
+			<ProfilePage user={user} myApp={myApp} />,
 			containerEl
 		);
 	},
 	feed: function() {
 		React.render(
-			<UserFeedPage />,
+			<UserFeedPage user={user} myApp={myApp} />,
 			containerEl
 		);
 	},
 	restaurant: function() {
 		React.render(
-			<RestaurantPage />,
+			<RestaurantPage user={user} myApp={myApp} />,
 			containerEl
 		);
 	},
 	category: function(category) {
 
 		React.render(
-			<CategoryPage />,
+			<CategoryPage user={user} myApp={myApp} />,
 			containerEl
 		);
 	}
@@ -73,3 +80,5 @@ var myApp = new App();
 Backbone.history.start();
 
 console.log('application running');
+
+user.me();

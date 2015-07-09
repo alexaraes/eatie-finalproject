@@ -11,6 +11,6 @@ module.exports = Backbone.Model.extend({
 		lat: null,
 		lng: null
 	},
-	parseClassName: 'Post',
+	parseClassName: 'Restaurant',
     idAttribute: 'objectId'
 });
