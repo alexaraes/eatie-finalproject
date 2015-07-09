@@ -3,10 +3,15 @@ var Backbone = require('backbone');
 var UserModel = require('./models/UserModel.js');
 var PostCollection = require('./collections/PostCollection.js');
 
-var HomeComponent = require('./components/HomeComponent.js');
-var SignUpComponent = require('./components/SignUpComponent.js');
-var LoginComponent = require('./components/LoginComponent.js');
-var 
+var HomePage = require('./components/HomeComponent.js');
+var NavBar = require('./components/NavbarComponent.js');
+
+var containerEl = document.getElementById('container');
+
+React.render(
+	<NavBar myApp={myApp} />,
+	document.getElementById('nav')
+);
 
 var App = Backbone.Router.extend({
 	routes: {
@@ -21,38 +26,45 @@ var App = Backbone.Router.extend({
 	},
 	home: function() {
 		React.render(
-			<HomePage />
+			<HomePage />,
+			containerEl
 		);
 	},
 	signup: function() {
 		React.render(
-			<SignUpPage />
+			<SignUpPage />,
+			containerEl
 		);
 	},
 	login: function() {
 		React.render(
-			<LoginPage />
+			<LoginPage />,
+			containerEl
 		);
 	},
 	profile: function() {
 		React.render(
-			<ProfilePage />
+			<ProfilePage />,
+			containerEl
 		);
 	},
 	feed: function() {
 		React.render(
-			<UserFeedPage />
+			<UserFeedPage />,
+			containerEl
 		);
 	},
 	restaurant: function() {
 		React.render(
-			<RestaurantPage />
+			<RestaurantPage />,
+			containerEl
 		);
 	},
 	category: function(category) {
 
 		React.render(
-			<CategoryPage />
+			<CategoryPage />,
+			containerEl
 		);
 	}
 });
