@@ -35812,13 +35812,247 @@ module.exports = Backbone.Collection.extend({
     parseClassName: 'Post'
 });
 
-},{"../models/PostModel":182,"backbone":2}],176:[function(require,module,exports){
+},{"../models/PostModel":185,"backbone":2}],176:[function(require,module,exports){
+'use strict';
+
+var Backbone = require('backbone');
+var SuggestionModel = require('../models/SuggestionModel');
+
+module.exports = Backbone.Collection.extend({
+    model: SuggestionModel,
+    parseClassName: 'Restaurant'
+});
+
+},{"../models/SuggestionModel":186,"backbone":2}],177:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
+var _ = require('../../node_modules/underscore/underscore-min.js');
+
+module.exports = React.createClass({
+	displayName: 'exports',
+
+	render: function render() {
+		return React.createElement(
+			'div',
+			{ className: 'feedClass' },
+			'hello'
+		);
+	}
+});
+
+},{"../../node_modules/underscore/underscore-min.js":174,"react":173}],178:[function(require,module,exports){
+'use strict';
+
+var React = require('react');
+var _ = require('../../node_modules/underscore/underscore-min.js');
+var SuggestionModel = require('../models/SuggestionModel.js');
+
+module.exports = React.createClass({
+	displayName: 'exports',
+
+	getInitialState: function getInitialState() {
+		return {
+			errors: {}
+		};
+	},
+	render: function render() {
+		return React.createElement(
+			'div',
+			null,
+			React.createElement(
+				'form',
+				{ className: 'admin', type: 'submit', ref: 'newSugg', onSubmit: this.register },
+				React.createElement(
+					'div',
+					null,
+					'Hello there!'
+				),
+				React.createElement(
+					'label',
+					null,
+					'Restaurant Name'
+				),
+				React.createElement('br', null),
+				React.createElement('input', { type: 'text', ref: 'name' }),
+				React.createElement('br', null),
+				React.createElement(
+					'div',
+					{ className: 'errorText' },
+					this.state.errors.name
+				),
+				React.createElement(
+					'label',
+					null,
+					'Food'
+				),
+				React.createElement('br', null),
+				React.createElement('input', { type: 'text', ref: 'food' }),
+				React.createElement('br', null),
+				React.createElement(
+					'div',
+					{ className: 'errorText' },
+					this.state.errors.food
+				),
+				React.createElement(
+					'label',
+					null,
+					'Picture'
+				),
+				React.createElement('br', null),
+				React.createElement('input', { type: 'text', ref: 'photo' }),
+				React.createElement('br', null),
+				React.createElement(
+					'div',
+					{ className: 'errorText' },
+					this.state.errors.photo
+				),
+				React.createElement(
+					'label',
+					null,
+					'Address'
+				),
+				React.createElement('br', null),
+				React.createElement('input', { type: 'text', ref: 'address' }),
+				React.createElement('br', null),
+				React.createElement(
+					'div',
+					{ className: 'errorText' },
+					this.state.errors.address
+				),
+				React.createElement(
+					'label',
+					null,
+					'Latitude'
+				),
+				React.createElement('br', null),
+				React.createElement('input', { type: 'text', ref: 'lat' }),
+				React.createElement('br', null),
+				React.createElement(
+					'div',
+					{ className: 'errorText' },
+					this.state.errors.lat
+				),
+				React.createElement('div', { className: 'errorText', ref: 'serverError' }),
+				React.createElement(
+					'label',
+					null,
+					'Longitude'
+				),
+				React.createElement('br', null),
+				React.createElement('input', { type: 'text', ref: 'long' }),
+				React.createElement('br', null),
+				React.createElement(
+					'div',
+					{ className: 'errorText' },
+					this.state.errors.lng
+				),
+				React.createElement(
+					'label',
+					null,
+					'Category'
+				),
+				React.createElement('br', null),
+				React.createElement('input', { type: 'text', ref: 'category' }),
+				React.createElement('br', null),
+				React.createElement(
+					'div',
+					{ className: 'errorText' },
+					this.state.errors.category
+				),
+				React.createElement(
+					'label',
+					null,
+					'Description'
+				),
+				React.createElement('br', null),
+				React.createElement('input', { type: 'text', ref: 'description' }),
+				React.createElement('br', null),
+				React.createElement(
+					'div',
+					{ className: 'errorText' },
+					this.state.errors.descrip
+				),
+				React.createElement(
+					'button',
+					{ type: 'submit' },
+					'Submit'
+				),
+				React.createElement('br', null)
+			)
+		);
+	},
+	register: function register(e) {
+		e.preventDefault();
+
+		var that = this;
+		var errors = {};
+
+		var newSuggestion = new SuggestionModel({
+			name: this.refs.name.getDOMNode().value,
+			food: this.refs.food.getDOMNode().value,
+			photo: this.refs.photo.getDOMNode().value,
+			address: this.refs.address.getDOMNode().value,
+			lat: this.refs.lat.getDOMNode().value,
+			lng: this.refs.long.getDOMNode().value,
+			category: this.refs.category.getDOMNode().value,
+			description: this.refs.description.getDOMNode().value
+		});
+
+		if (!newSuggestion.get('name')) {
+			errors.name = 'please enter the name of the restaurant';
+		}
+		if (!newSuggestion.get('food')) {
+			errors.food = 'please enter a food item';
+		}
+		if (!newSuggestion.get('photo')) {
+			errors.photo = 'please enter a photo';
+		}
+		if (!newSuggestion.get('address')) {
+			errors.address = 'please enter the restaurant\'s address';
+		}
+		if (!newSuggestion.get('lat')) {
+			errors.lat = 'please enter the latitude';
+		}
+		if (!newSuggestion.get('lng')) {
+			errors.lng = 'please enter the longitude';
+		}
+		if (!newSuggestion.get('category')) {
+			errors.category = 'please enter this food\'s category';
+		}
+		if (!newSuggestion.get('description')) {
+			errors.descrip = 'please enter a short description';
+		}
+
+		console.log(errors);
+		if (_.isEmpty(errors)) {
+
+			newSuggestion.save(null, {
+				success: function success(suggModel) {
+					that.props.myApp.navigate('home', { trigger: true });
+					console.log(newSuggestion);
+				},
+				error: function error(suggModel, response) {
+					that.refs.serverError.getDOMNode().innerHTML = response.responseJSON.error;
+					console.log('suggestion was not saved', response.responseJSON);
+				}
+			});
+		} else {
+			that.setState({ errors: errors });
+		}
+	}
+});
+
+},{"../../node_modules/underscore/underscore-min.js":174,"../models/SuggestionModel.js":186,"react":173}],179:[function(require,module,exports){
+'use strict';
+
+var React = require('react');
+var $ = require('jquery');
 var Masonry = require('../../node_modules/masonry-layout/masonry.js');
 
-var suggList = [];
+// var suggestionModel = require('../models/SuggestionModel.js');
+
+var suggestionList = [];
 
 module.exports = React.createClass({
 	displayName: 'exports',
@@ -35829,105 +36063,69 @@ module.exports = React.createClass({
 		};
 	},
 	componentDidMount: function componentDidMount() {
-
-		document.on('ready', setTimeout(function () {
+		var that = this;
+		setTimeout(function () {
 			var grid = document.querySelector('.grid');
+
 			var msnry = new Masonry(grid, {
 				// options...
 				itemSelector: '.grid-item',
 				columnWidth: 0,
 				isFitWidth: true
 			});
-		}, 500));
+		}, 500);
 	},
 	render: function render() {
+		this.props.suggestions.models.reverse();
 
-		// listItems = this.state.suggArray.map(function(listModel) {
-		// 	console.log(listModel);
-		// 	console.log(listModel.id);
+		var restEls = this.props.suggestions.map(function (suggestionModel) {
+			return React.createElement(
+				'div',
+				{ className: 'grid-item' },
+				React.createElement('img', { src: suggestionModel.get('photo') }),
+				React.createElement(
+					'div',
+					{ className: 'categoryDiv' },
+					React.createElement(
+						'a',
+						{ href: '#category/' + suggestionModel.get('category'), className: 'postCat' },
+						suggestionModel.get('category')
+					)
+				)
+			);
+		});
 
-		// 	for(var i=0; i<listModel.id; i++) {
-		// 		listModelId = listModel.id[i];
-		// 	}
-		// 	return (
-		// 		<div key={listModel.cid}>
-		// 			<input type="checkbox" name="checkbox" onClick={this.checkboxClick} />
-		// 			<label for="checkbox_id">{listModel.name}</label>
-		// 		</div>
-		// 	)
-		// });
 		return React.createElement(
 			'div',
 			null,
 			React.createElement(
 				'div',
-				{ className: 'bg-img' },
+				{ className: 'homeContainer' },
 				React.createElement(
 					'div',
-					{ className: 'hello' },
-					'Get to Know Austin with Your Mouth'
+					{ className: 'bg-img' },
+					React.createElement(
+						'div',
+						{ className: 'hello' },
+						'Put Your City Where Your Mouth Is'
+					),
+					React.createElement(
+						'div',
+						{ className: 'hello2' },
+						'Scroll for noms \\/'
+					)
 				),
 				React.createElement(
 					'div',
-					{ className: 'hello2' },
-					'Scroll for noms \\/'
+					{ className: 'grid', ref: 'grid' },
+					restEls
 				)
-			),
-			React.createElement(
-				'div',
-				{ className: 'grid' },
-				React.createElement('div', { className: 'grid-item' }),
-				React.createElement('div', { className: 'grid-item grid-item--height2' }),
-				React.createElement('div', { className: 'grid-item grid-item--height3' }),
-				React.createElement('div', { className: 'grid-item grid-item--height2' }),
-				React.createElement('div', { className: 'grid-item' }),
-				React.createElement('div', { className: 'grid-item' }),
-				React.createElement('div', { className: 'grid-item' }),
-				React.createElement('div', { className: 'grid-item grid-item--height2' }),
-				React.createElement('div', { className: 'grid-item grid-item--height3' }),
-				React.createElement('div', { className: 'grid-item' }),
-				React.createElement('div', { className: 'grid-item grid-item--height2' }),
-				React.createElement('div', { className: 'grid-item' }),
-				React.createElement('div', { className: 'grid-item grid-item--height2' }),
-				React.createElement('div', { className: 'grid-item' }),
-				React.createElement('div', { className: 'grid-item' }),
-				React.createElement('div', { className: 'grid-item grid-item--height2' }),
-				React.createElement('div', { className: 'grid-item' }),
-				React.createElement('div', { className: 'grid-item' }),
-				React.createElement('div', { className: 'grid-item grid-item--height3' }),
-				React.createElement('div', { className: 'grid-item grid-item--height2' }),
-				React.createElement('div', { className: 'grid-item' }),
-				React.createElement('div', { className: 'grid-item' }),
-				React.createElement('div', { className: 'grid-item grid-item--height2' }),
-				React.createElement('div', { className: 'grid-item' }),
-				React.createElement('div', { className: 'grid-item grid-item--height2' }),
-				React.createElement('div', { className: 'grid-item grid-item--height3' }),
-				React.createElement('div', { className: 'grid-item grid-item--height2' }),
-				React.createElement('div', { className: 'grid-item' }),
-				React.createElement('div', { className: 'grid-item' }),
-				React.createElement('div', { className: 'grid-item' }),
-				React.createElement('div', { className: 'grid-item grid-item--height2' }),
-				React.createElement('div', { className: 'grid-item grid-item--height3' }),
-				React.createElement('div', { className: 'grid-item' }),
-				React.createElement('div', { className: 'grid-item grid-item--height2' }),
-				React.createElement('div', { className: 'grid-item' }),
-				React.createElement('div', { className: 'grid-item grid-item--height2' }),
-				React.createElement('div', { className: 'grid-item' }),
-				React.createElement('div', { className: 'grid-item' }),
-				React.createElement('div', { className: 'grid-item grid-item--height2' }),
-				React.createElement('div', { className: 'grid-item' }),
-				React.createElement('div', { className: 'grid-item' }),
-				React.createElement('div', { className: 'grid-item grid-item--height3' }),
-				React.createElement('div', { className: 'grid-item grid-item--height2' }),
-				React.createElement('div', { className: 'grid-item' }),
-				React.createElement('div', { className: 'grid-item' }),
-				React.createElement('div', { className: 'grid-item grid-item--height2' })
 			)
 		);
 	}
 });
 
-},{"../../node_modules/masonry-layout/masonry.js":7,"react":173}],177:[function(require,module,exports){
+},{"../../node_modules/masonry-layout/masonry.js":7,"jquery":6,"react":173}],180:[function(require,module,exports){
 "use strict";
 
 var React = require("react");
@@ -35947,26 +36145,14 @@ module.exports = React.createClass({
 			React.createElement(
 				"form",
 				{ type: "submit", ref: "logForm", className: "loginForm", onSubmit: this.logIn },
-				React.createElement(
-					"label",
-					null,
-					"Username"
-				),
-				React.createElement("br", null),
-				React.createElement("input", { type: "text", ref: "username" }),
+				React.createElement("input", { type: "text", ref: "username", placeholder: "username" }),
 				React.createElement("br", null),
 				React.createElement(
 					"div",
 					{ className: "errorText" },
 					this.state.errors.username
 				),
-				React.createElement(
-					"label",
-					null,
-					"Password"
-				),
-				React.createElement("br", null),
-				React.createElement("input", { type: "password", ref: "password" }),
+				React.createElement("input", { type: "password", ref: "password", placeholder: "password" }),
 				React.createElement("br", null),
 				React.createElement(
 					"div",
@@ -36017,7 +36203,7 @@ module.exports = React.createClass({
 	}
 });
 
-},{"react":173}],178:[function(require,module,exports){
+},{"react":173}],181:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -36090,8 +36276,8 @@ module.exports = React.createClass({
 						{ className: 'linkDiv' },
 						React.createElement(
 							'a',
-							{ href: '#profile' },
-							'PROFILE'
+							{ href: '#feed' },
+							'ACTIVITY'
 						)
 					),
 					React.createElement(
@@ -36138,28 +36324,112 @@ module.exports = React.createClass({
 	}
 });
 
-},{"react":173}],179:[function(require,module,exports){
-"use strict";
+},{"react":173}],182:[function(require,module,exports){
+'use strict';
 
-var React = require("react");
+var React = require('react');
+var _ = require('../../node_modules/underscore/underscore-min.js');
+var PostModel = require('../models/PostModel.js');
+var PostCollection = require('../collections/PostCollection.js');
 
 module.exports = React.createClass({
-	displayName: "exports",
+	displayName: 'exports',
 
+	getInitialState: function getInitialState() {
+		return {
+			errors: {}
+		};
+	},
 	render: function render() {
+
+		var postEls = this.props.posts.map(function (postModel) {
+			return React.createElement(
+				'div',
+				{ className: 'grid-item' },
+				React.createElement('img', { src: postModel.get('image') }),
+				React.createElement(
+					'div',
+					{ className: 'categoryDiv' },
+					postModel.get('caption')
+				)
+			);
+		});
+
 		return React.createElement(
-			"div",
-			null,
+			'div',
+			{ className: 'shareContainer' },
 			React.createElement(
-				"div",
-				{ className: "profilediv" },
-				"What up, profile page!"
-			)
+				'div',
+				{ className: 'shareTitle' },
+				'Share your experience!'
+			),
+			React.createElement(
+				'form',
+				{ className: 'shareForm', type: 'submit', onSubmit: this.shareSubmit },
+				React.createElement(
+					'label',
+					{ className: 'shareLabel' },
+					'Photo URL: '
+				),
+				React.createElement('input', { className: 'shareInput', type: 'text', ref: 'url' }),
+				React.createElement(
+					'div',
+					{ className: 'errorText' },
+					this.state.errors.url
+				),
+				React.createElement(
+					'label',
+					{ className: 'shareLabel' },
+					'Optional Caption: '
+				),
+				React.createElement('input', { className: 'shareInput', type: 'text', ref: 'caption' }),
+				React.createElement(
+					'button',
+					{ className: 'shareButton', type: 'submit' },
+					'Share!'
+				)
+			),
+			postEls
 		);
+	},
+	shareSubmit: function shareSubmit(e) {
+		e.preventDefault();
+
+		var that = this;
+		var errors = {};
+
+		var newPost = new PostModel({
+			image: this.refs.url.getDOMNode().value,
+			caption: this.refs.caption.getDOMNode().value,
+			userId: this.props.user.get('objectId')
+		});
+
+		console.log(this.props.user.get('objectId'));
+
+		console.log(newPost);
+
+		if (!newPost.get('url')) {
+			errors.url = 'please copy and paste your image url';
+		}
+
+		if (_.isEmpty(errors)) {
+
+			newPost.save(null, {
+				success: function success(postModel) {
+					that.props.myApp.navigate('/profile/' + this.props.user.get('objectId'), { trigger: true });
+				},
+				error: function error(postModel, response) {
+					that.refs.serverError.getDOMNode().innerHTML = response.responseJSON.error;
+					console.log('post was not posted', response.responseJSON);
+				}
+			});
+		} else {
+			that.setState({ errors: errors });
+		}
 	}
 });
 
-},{"react":173}],180:[function(require,module,exports){
+},{"../../node_modules/underscore/underscore-min.js":174,"../collections/PostCollection.js":175,"../models/PostModel.js":185,"react":173}],183:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -36177,65 +36447,35 @@ module.exports = React.createClass({
 		return React.createElement(
 			'form',
 			{ className: 'regForm', type: 'submit', ref: 'regForm', onSubmit: this.register },
-			React.createElement(
-				'label',
-				null,
-				'First Name'
-			),
-			React.createElement('br', null),
-			React.createElement('input', { type: 'text', ref: 'name' }),
+			React.createElement('input', { type: 'text', ref: 'name', placeholder: 'first name' }),
 			React.createElement('br', null),
 			React.createElement(
 				'div',
 				{ className: 'errorText' },
 				this.state.errors.name
 			),
-			React.createElement(
-				'label',
-				null,
-				'Email'
-			),
-			React.createElement('br', null),
-			React.createElement('input', { type: 'text', ref: 'email' }),
+			React.createElement('input', { type: 'text', placeholder: 'email', ref: 'email' }),
 			React.createElement('br', null),
 			React.createElement(
 				'div',
 				{ className: 'errorText' },
 				this.state.errors.email
 			),
-			React.createElement(
-				'label',
-				null,
-				'Username'
-			),
-			React.createElement('br', null),
-			React.createElement('input', { type: 'text', ref: 'username' }),
+			React.createElement('input', { type: 'text', ref: 'username', placeholder: 'username' }),
 			React.createElement('br', null),
 			React.createElement(
 				'div',
 				{ className: 'errorText' },
 				this.state.errors.username
 			),
-			React.createElement(
-				'label',
-				null,
-				'Password'
-			),
-			React.createElement('br', null),
-			React.createElement('input', { type: 'password', ref: 'password' }),
+			React.createElement('input', { type: 'password', ref: 'password', placeholder: 'password' }),
 			React.createElement('br', null),
 			React.createElement(
 				'div',
 				{ className: 'errorText' },
 				this.state.errors.password
 			),
-			React.createElement(
-				'label',
-				null,
-				'Verify Password'
-			),
-			React.createElement('br', null),
-			React.createElement('input', { type: 'password', ref: 'verifyPass' }),
+			React.createElement('input', { type: 'password', ref: 'verifyPass', placeholder: 'verify password' }),
 			React.createElement('br', null),
 			React.createElement(
 				'div',
@@ -36301,7 +36541,7 @@ module.exports = React.createClass({
 	}
 });
 
-},{"../../node_modules/underscore/underscore-min.js":174,"react":173}],181:[function(require,module,exports){
+},{"../../node_modules/underscore/underscore-min.js":174,"react":173}],184:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -36309,19 +36549,59 @@ var Backbone = require('backbone');
 var $ = require('jquery');
 
 var UserModel = require('./models/UserModel.js');
+var SuggestionCollection = require('./collections/SuggestionCollection.js');
 var PostCollection = require('./collections/PostCollection.js');
+var SuggestionModel = require('./models/SuggestionModel.js');
+var PostModel = require('./models/PostModel.js');
 
 var HomePage = require('./components/HomeComponent.js');
 var NavBar = require('./components/NavbarComponent.js');
 var LoginPage = require('./components/LoginComponent.js');
 var SignUpPage = require('./components/SignupComponent.js');
+var AdminPage = require('./components/AdminComponent.js');
+var ActivityFeed = require('./components/ActivityFeedComponent.js');
 var ProfilePage = require('./components/ProfileComponent.js');
 
 var user = new UserModel();
+var suggestions = new SuggestionCollection();
+var posts = new PostCollection();
+
+var suggList = React.createElement(HomePage, { myApp: myApp, suggestions: suggestions, user: user });
+var postList = React.createElement(ProfilePage, { myApp: myApp, suggestions: suggestions, user: user, posts: posts });
 
 var containerEl = document.getElementById('container');
 
 React.render(React.createElement(NavBar, { user: user, myApp: myApp }), document.getElementById('nav'));
+
+function fetchSuggestions(objectId) {
+	var q = {};
+
+	if (objectId) {
+		q.objectId = userId;
+	}
+
+	posts.fetch({
+		query: q,
+		success: function success() {
+			React.render(postList, containerEl);
+		}
+	});
+}
+
+function fetchPosts(category) {
+	var q = {};
+
+	if (category) {
+		q.category = category;
+	}
+
+	suggestions.fetch({
+		query: q,
+		success: function success() {
+			React.render(suggList, containerEl);
+		}
+	});
+}
 
 var App = Backbone.Router.extend({
 	routes: {
@@ -36329,13 +36609,15 @@ var App = Backbone.Router.extend({
 		'home': 'home',
 		'signup': 'signup',
 		'login': 'login',
-		'profile': 'profile',
+		'profile/:userId': 'profile',
 		'feed': 'feed',
 		'restaurant': 'restaurant',
-		'category/:category': 'category'
+		'category/:category': 'category',
+		'admin': 'admin'
 	},
 	home: function home() {
-		React.render(React.createElement(HomePage, { user: user, myApp: myApp }), containerEl);
+		fetchPosts();
+		React.render(suggList, containerEl);
 	},
 	signup: function signup() {
 		React.render(React.createElement(SignUpPage, { user: user, myApp: myApp }), containerEl);
@@ -36343,18 +36625,23 @@ var App = Backbone.Router.extend({
 	login: function login() {
 		React.render(React.createElement(LoginPage, { user: user, myApp: myApp }), containerEl);
 	},
-	profile: function profile() {
-		React.render(React.createElement(ProfilePage, { user: user, myApp: myApp }), containerEl);
+	profile: function profile(objectId) {
+		fetchPosts(objectId);
+		React.render(React.createElement(HomePage, { myApp: myApp, suggestions: suggestions, user: user }), containerEl);
 	},
 	feed: function feed() {
-		React.render(React.createElement(UserFeedPage, { user: user, myApp: myApp }), containerEl);
+		fetchPosts();
+		React.render(React.createElement(ActivityFeed, { posts: posts, user: user, myApp: myApp }), containerEl);
 	},
 	restaurant: function restaurant() {
 		React.render(React.createElement(RestaurantPage, { user: user, myApp: myApp }), containerEl);
 	},
 	category: function category(_category) {
-
+		fetchSuggestions(_category);
 		React.render(React.createElement(CategoryPage, { user: user, myApp: myApp }), containerEl);
+	},
+	admin: function admin() {
+		React.render(React.createElement(AdminPage, { suggestions: suggestions, myApp: myApp }), containerEl);
 	}
 });
 
@@ -36365,7 +36652,7 @@ console.log('application running');
 
 user.me();
 
-},{"./collections/PostCollection.js":175,"./components/HomeComponent.js":176,"./components/LoginComponent.js":177,"./components/NavbarComponent.js":178,"./components/ProfileComponent.js":179,"./components/SignupComponent.js":180,"./models/UserModel.js":183,"backbone":2,"jquery":6,"react":173}],182:[function(require,module,exports){
+},{"./collections/PostCollection.js":175,"./collections/SuggestionCollection.js":176,"./components/ActivityFeedComponent.js":177,"./components/AdminComponent.js":178,"./components/HomeComponent.js":179,"./components/LoginComponent.js":180,"./components/NavbarComponent.js":181,"./components/ProfileComponent.js":182,"./components/SignupComponent.js":183,"./models/PostModel.js":185,"./models/SuggestionModel.js":186,"./models/UserModel.js":187,"backbone":2,"jquery":6,"react":173}],185:[function(require,module,exports){
 'use strict';
 
 var parseSettings = require('../../config/parse.js');
@@ -36374,16 +36661,37 @@ var Backbone = require('backparse')(parseSettings);
 module.exports = Backbone.Model.extend({
     defaults: {
         image: '',
-        userId: '',
+        objectId: '',
         caption: '',
-        suggestionId: '',
         createdAt: ''
     },
     parseClassName: 'Post',
     idAttribute: 'objectId'
 });
 
-},{"../../config/parse.js":1,"backparse":4}],183:[function(require,module,exports){
+},{"../../config/parse.js":1,"backparse":4}],186:[function(require,module,exports){
+'use strict';
+
+var parseSettings = require('../../config/parse.js');
+var Backbone = require('backparse')(parseSettings);
+
+module.exports = Backbone.Model.extend({
+	defaults: {
+		name: null,
+		food: null,
+		createdAt: null,
+		address: null,
+		category: null,
+		lat: null,
+		lng: null,
+		photo: null,
+		description: null
+	},
+	parseClassName: 'Restaurant',
+	idAttribute: 'objectId'
+});
+
+},{"../../config/parse.js":1,"backparse":4}],187:[function(require,module,exports){
 'use strict';
 
 var parseSettings = require('../../config/parse.js');
@@ -36403,7 +36711,7 @@ module.exports = Backbone.Model.extend({
     isUser: true
 });
 
-},{"../../config/parse.js":1,"backparse":4}]},{},[181])
+},{"../../config/parse.js":1,"backparse":4}]},{},[184])
 
 
 //# sourceMappingURL=all.js.map

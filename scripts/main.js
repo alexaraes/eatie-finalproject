@@ -3,15 +3,25 @@ var Backbone = require('backbone');
 var $ = require('jquery');
 
 var UserModel = require('./models/UserModel.js');
+var SuggestionCollection = require('./collections/SuggestionCollection.js');
 var PostCollection = require('./collections/PostCollection.js');
+var SuggestionModel = require('./models/SuggestionModel.js');
+var PostModel = require('./models/PostModel.js');
 
 var HomePage = require('./components/HomeComponent.js');
 var NavBar = require('./components/NavbarComponent.js');
 var LoginPage = require('./components/LoginComponent.js');
 var SignUpPage = require('./components/SignupComponent.js');
+var AdminPage = require('./components/AdminComponent.js');
+var ActivityFeed = require('./components/ActivityFeedComponent.js');
 var ProfilePage = require('./components/ProfileComponent.js');
 
 var user = new UserModel();
+var suggestions = new SuggestionCollection();
+var posts = new PostCollection();
+
+var suggList = (<HomePage myApp={myApp} suggestions={suggestions} user={user} />);
+var postList = (<ProfilePage myApp={myApp} suggestions={suggestions} user={user} posts={posts} />);
 
 var containerEl = document.getElementById('container');
 
@@ -20,20 +30,53 @@ React.render(
 	document.getElementById('nav')
 );
 
+
+function fetchSuggestions(objectId) {
+	var q = {};
+
+	if(objectId) {
+		q.objectId = userId;
+	}
+
+	posts.fetch({
+		query: q,
+		success: function() {
+			React.render(postList, containerEl);
+		}
+	});
+}
+
+function fetchPosts(category) {
+	var q = {};
+
+	if(category) {
+		q.category = category;
+	}
+
+	suggestions.fetch({
+		query: q,
+		success: function() {
+			React.render(suggList, containerEl);
+		}
+	});
+}
+
 var App = Backbone.Router.extend({
 	routes: {
 		'': 'home',
 		'home': 'home',
 		'signup': 'signup',
 		'login': 'login',
-		'profile': 'profile',
+		'profile/:userId': 'profile',
 		'feed': 'feed',
 		'restaurant': 'restaurant',
-		'category/:category': 'category'
+		'category/:category': 'category',
+		'admin': 'admin'
 	},
 	home: function() {
+		fetchPosts();
 		React.render(
-			<HomePage user={user} myApp={myApp} />,
+			suggList,
 			containerEl
 		);
 	},
@@ -49,17 +92,16 @@ var App = Backbone.Router.extend({
 			containerEl
 		);
 	},
-	profile: function() {
-		React.render(
-			<ProfilePage user={user} myApp={myApp} />,
-			containerEl
-		);
+	profile: function(objectId) {
+		fetchPosts(objectId)
+		React.render(<HomePage myApp={myApp} suggestions={suggestions} user={user} />, containerEl);
 	},
 	feed: function() {
+		fetchPosts();
 		React.render(
-			<UserFeedPage user={user} myApp={myApp} />,
+			<ActivityFeed posts={posts} user={user} myApp={myApp} />,
 			containerEl
-		);
+		)
 	},
 	restaurant: function() {
 		React.render(
@@ -68,9 +110,15 @@ var App = Backbone.Router.extend({
 		);
 	},
 	category: function(category) {
-
+		fetchSuggestions(category);
 		React.render(
 			<CategoryPage user={user} myApp={myApp} />,
+			containerEl
+		);
+	},
+	admin: function() {
+		React.render(
+			<AdminPage suggestions={suggestions} myApp={myApp} />,
 			containerEl
 		);
 	}

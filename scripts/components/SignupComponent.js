@@ -10,24 +10,19 @@ module.exports = React.createClass({
 	render: function() {
 		return (
 			<form className="regForm" type="submit" ref="regForm" onSubmit={this.register}>
-				<label>First Name</label><br />
-				<input type="text" ref="name" /><br />
+				<input type="text" ref="name" placeholder="first name" /><br />
 				<div className="errorText">{this.state.errors.name}</div>
 
-				<label>Email</label><br />
-				<input type="text" ref="email" /><br />
+				<input type="text" placeholder='email' ref="email" /><br />
 				<div className="errorText">{this.state.errors.email}</div>
 
-				<label>Username</label><br />
-				<input type="text" ref="username" /><br />
+				<input type="text" ref="username" placeholder="username" /><br />
 				<div className="errorText">{this.state.errors.username}</div>
 
-				<label>Password</label><br />
-				<input type="password" ref="password" /><br />
+				<input type="password" ref="password" placeholder="password" /><br />
 				<div className="errorText">{this.state.errors.password}</div>
 
-				<label>Verify Password</label><br />
-				<input type="password" ref="verifyPass" /><br />
+				<input type="password" ref="verifyPass" placeholder="verify password" /><br />
 				<div className="errorText">{this.state.errors.verifyPass}</div>
 				<div className="errorText">{this.state.errors.isPass}</div>
 				<div className="errorText" ref="serverError"></div>

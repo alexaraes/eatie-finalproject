@@ -27,7 +27,7 @@ module.exports = React.createClass({
 				<div>
 					<ul>
 						<li className="linkDiv"><a href="#home">HOME</a></li>
-						<li className="linkDiv"><a href="#profile">PROFILE</a></li>
+						<li className="linkDiv"><a href="#feed">ACTIVITY</a></li>
 						<li className="linkDiv" onClick={this.onLogOut}><a href="#home">LOG OUT</a></li>
 						<li className="greet">Hey, <a href="#profile"> {firstName}!</a></li>
 					</ul>

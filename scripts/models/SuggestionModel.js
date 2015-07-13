@@ -3,13 +3,15 @@ var Backbone = require('backparse')(parseSettings);
 
 module.exports = Backbone.Model.extend({
 	defaults: {
-		restaurant: null,
-		product: null,
+		name: null,
+		food: null,
 		createdAt: null,
 		address: null,
 		category: null,
 		lat: null,
-		lng: null
+		lng: null,
+		photo: null,
+		description: null
 	},
 	parseClassName: 'Restaurant',
     idAttribute: 'objectId'

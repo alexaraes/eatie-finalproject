@@ -10,13 +10,13 @@ module.exports = React.createClass({
 		return (
 			<div>
 				<form type="submit" ref="logForm" className="loginForm" onSubmit={this.logIn}>
-					<label>Username</label><br />
-					<input type="text" ref="username" /><br />
+					<input type="text" ref="username" placeholder="username" /><br />
 					<div className="errorText">{this.state.errors.username}</div>
-					<label>Password</label><br />
-					<input type="password" ref="password" /><br />
+
+					<input type="password" ref="password" placeholder="password" /><br />
 					<div className="errorText">{this.state.errors.password}</div>
 					<div className="errorText" ref="serverError"></div>
+
 					<button type="submit">Login</button><br />
 				</form>
 			</div>
