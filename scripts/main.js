@@ -31,11 +31,11 @@ React.render(
 );
 
 
-function fetchSuggestions(objectId) {
+function fetchPosts(objectId) {
 	var q = {};
 
 	if(objectId) {
-		q.objectId = userId;
+		q.objectId = objectId;
 	}
 
 	posts.fetch({
@@ -46,7 +46,7 @@ function fetchSuggestions(objectId) {
 	});
 }
 
-function fetchPosts(category) {
+function fetchSuggestions(category) {
 	var q = {};
 
 	if(category) {
@@ -74,7 +74,7 @@ var App = Backbone.Router.extend({
 		'admin': 'admin'
 	},
 	home: function() {
-		fetchPosts();
+		fetchSuggestions();
 		React.render(
 			suggList,
 			containerEl

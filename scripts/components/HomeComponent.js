@@ -1,40 +1,39 @@
 var React = require('react');
-var $ = require('jquery');
-var Masonry = require('../../node_modules/masonry-layout/masonry.js');
+// var $ = require('jquery');
+// var Masonry = require('../../node_modules/masonry-layout/masonry.js');
+var MasonryMixin = require('react-masonry-mixin');
 
 // var suggestionModel = require('../models/SuggestionModel.js');
 
 var suggestionList = [];
 
+var masonryOptions = {
+	// transitionDuration: 0,
+	columnWidth: 0,
+	isFitWidth: true
+};
+
 module.exports = React.createClass({
+	mixins: [MasonryMixin('grid', masonryOptions)],
+
 	getInitialState: function() {
 		return {
 			suggArray: []
 		}
-	},
-	componentDidMount: function() {
-			var that = this;
-			setTimeout(function() {
-				var grid = document.querySelector('.grid');
-				
-				var msnry = new Masonry( grid, {
-				 	 // options...
-				 	itemSelector: '.grid-item',
-				 	columnWidth: 0,
-				  	isFitWidth: true
-				})
-			}, 500);
 	},
 	render: function() 	{
 		this.props.suggestions.models.reverse(); 
 
 		var restEls = this.props.suggestions.map(function(suggestionModel) {
 			return (
-			  <div className="grid-item">
-			  	<img src={suggestionModel.get('photo')}/>
-			  	<div className="categoryDiv"><a href={'#category/'+suggestionModel.get('category')} className="postCat">{suggestionModel.get('category')}</a></div>
-			  </div>
-					
+			  	<div className="box">
+			        <img src={suggestionModel.get('photo')} />
+			        <span className="caption fade-caption">
+			        <h2 className="suggName">{suggestionModel.get('name')}</h2>
+			        <p className="suggFood">{suggestionModel.get('food')}</p>
+			        <p className="suggAdd">{suggestionModel.get('address')}</p>
+			        </span>
+			    </div>
 			)
 		});
 
@@ -48,6 +47,7 @@ module.exports = React.createClass({
 
 					<div className="grid" ref="grid">
 					  {restEls}
+
 					</div>
 				</div>
 			</div>
