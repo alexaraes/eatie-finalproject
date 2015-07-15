@@ -4,15 +4,23 @@ $titlefont: 'Open Sans', sans-serif;
 	font-family: $titlefont;
 }
 
+.mapCanvas { height: 100%; margin: 0; padding: 0;}
+
 #container {
 	font: $titlefont, sans-serif;
 	height: auto;
-	text-align: center;
+	// text-align: center;
 	margin-left: auto;
 	margin-right: auto;
 	font-color: white;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
+}
+
+select {
+	border: 1px solid black;
+	border-radius: 0px;
+	font-size: 2vw;
 }
 
 li {
@@ -40,7 +48,7 @@ a:hover {
 	padding-left: 30%;
 }
 
-input, button {
+button {
 	width: 50%;
 	height: 50px;
 	margin: 25px;
@@ -56,6 +64,10 @@ button {
 	color: white;
 }
 
+input {
+	float: left;
+}
+
 .categoryDiv {
 	text-align: center;
 }
@@ -63,16 +75,15 @@ button {
 .shareContainer {
 	color: black;
 	padding-top: 20%;
-	text-align: center;
+	// text-align: center;
 
 	.shareTitle {
 		margin: 20px;
-		font-size: 5vw;
+		font-size: 5.5vw;
 	}
 
 	.shareForm {
-		display: block;
-		text-align: center;
+		display: inline;
 
 		.shareInput {
 			box-sizing: border-box;
@@ -83,11 +94,17 @@ button {
 			font-size: 3.3vw;
 		}
 
-		.shareLabel {
+		.shareLabel, .shareRate {
 			box-sizing: border-box;
-			font-size: 3.5vw;
+			font-size: 4vw;
 			display: block;
 			margin: 10px;
+		}
+
+		.shareRate {
+			display: inline-block;
+			font-size: 3vw;
+			clear: both;
 		}
 
 		.shareButton {
@@ -333,5 +350,9 @@ button {
 
 	.suggAdd {
 		font-size: 1vw;
+	}
+
+	select {
+		height: 50px;
 	}
 }

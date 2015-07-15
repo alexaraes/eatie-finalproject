@@ -2,6 +2,8 @@ var React = require('react');
 var _ = require('../../node_modules/underscore/underscore-min.js');
 var PostModel = require('../models/PostModel.js');
 var PostCollection = require('../collections/PostCollection.js');
+var SuggestionModel = require('../models/SuggestionModel.js');
+var SuggestionCollection = require('../collections/SuggestionCollection.js');
 
 module.exports = React.createClass({
 	getInitialState: function() {
@@ -16,22 +18,38 @@ module.exports = React.createClass({
 			  <div className="grid-item">
 			  	<img src={postModel.get('image')}/>
 			  	<div className="categoryDiv">{postModel.get('caption')}</div>
-			  </div>
-					
+			  </div>	
 			)
 		});
 
+		var dropdownOptions = this.props.suggestions.map(function(suggestionModel) {
+			return (
+				<option>{suggestionModel.get('name')}</option>
+			)
+		})
+
 		return (
 			<div className="shareContainer">
-				<div className="shareTitle">Share your experience!</div>
+				<div className="shareTitle">So what did you think?</div>
 				<form className="shareForm" type='submit'  onSubmit={this.shareSubmit} >
 					
-					<label className="shareLabel">Photo URL: </label>
-					<input className="shareInput" type="text" ref="url" />
+					<label className="shareLabel">Where did you go?</label>
+					<select className="shareInput">
+						<option>Choose a restaurant!</option>
+						{dropdownOptions}
+					</select>
 					<div className="errorText">{this.state.errors.url}</div>
 
-					<label className="shareLabel">Optional Caption: </label>
-					<input className="shareInput" type="text" ref="caption" />
+					<label className="shareLabel">How was it?</label>
+
+					<input className="shareInput" type="checkbox" ref="caption" />
+					<label className="shareRate">It was so tasty!</label>
+
+					<input className="shareInput" type="checkbox" ref="caption" />
+					<label className="shareRate">It was okay...</label>
+
+					<input className="shareInput" type="checkbox" ref="caption" />
+					<label className="shareRate">It was a bad choice.</label>
 
 					<button className="shareButton" type="submit">Share!</button>
 				</form>
