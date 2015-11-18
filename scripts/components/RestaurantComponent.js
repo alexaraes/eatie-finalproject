@@ -4,10 +4,10 @@ module.exports = React.createClass({
 	render: function() {
 		
 		function initialize() {
-			var myLatlng = new google.maps.LatLng(30.252738,-97.723682);
+			var myLatLng = new google.maps.LatLng(30.252738,-97.723682);
 			var mapOptions = {
 				zoom: 15,
-				center: myLatlng
+				center: myLatLng
 			}
 			var map = new google.maps.Map(document.querySelector('map-canvas'), mapOptions);
 
@@ -22,7 +22,7 @@ module.exports = React.createClass({
 			});
 
 			var marker = new google.maps.Marker({
-			    position: myLatlng,
+			    position: myLatLng,
 			    map: map,
 			    title: 'Launderette'
 			});

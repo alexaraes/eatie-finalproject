@@ -116,7 +116,7 @@ button {
 
 .box {
   box-sizing: border-box;
-  width: 390px;
+  width: 290px;
   float: left;
   border: 2px solid #8a0000;
   border-color: #8a0000;
@@ -175,7 +175,7 @@ button {
   height: 500px;
   top: 65px;
   padding-top: 60px;
-  margin-bottom: 50px;
+  /*margin-bottom: 50px;*/
   position: relative;
   background-size: cover;
   background-image: url("../images/austin-skyline.jpg"); }

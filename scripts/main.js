@@ -17,10 +17,10 @@ var ActivityFeed = require('./components/ActivityFeedComponent.js');
 var ProfilePage = require('./components/ProfileComponent.js');
 
 var user = new UserModel();
-var suggestions = new SuggestionCollection();
+var suggestion = new SuggestionCollection();
 var posts = new PostCollection();
 
-var suggList = (<HomePage myApp={myApp} suggestions={suggestions} user={user} />);
+var suggList = (<HomePage myApp={myApp} suggestions={suggestion} user={user} />);
 var postList = (<ProfilePage myApp={myApp} suggestions={suggestions} user={user} posts={posts} />);
 
 var containerEl = document.getElementById('container');

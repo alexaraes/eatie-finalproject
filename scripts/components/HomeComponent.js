@@ -44,10 +44,8 @@ module.exports = React.createClass({
 						<div className="hello">Put Your City Where Your Mouth Is</div>
 						<div className="hello2">Scroll for noms \/</div>
 					</div>
-
 					<div className="grid" ref="grid">
 					  {restEls}
-
 					</div>
 				</div>
 			</div>
